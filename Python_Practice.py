@@ -306,6 +306,24 @@ print(student_df)
 print(student_df.index)
 print(student_df.columns)
 
+#儘管a_df看起來像不同的變數了,但a與a_df的記憶體位置仍指向同一個地方
+a= [1,2,3]
+a_df = a
+   
+#在變數a新增一個新的數字進去
+a.append(4)
 
-
+#把a和a_df都印出來,發現明明被新增變數的只有a,但a_df的內容也被改變了
+print(a)
+print(a_df)
+   
+import copy
+b = [2,3,4]
+#以上變數備份以避免被覆蓋的方式,可以使用import copy再用deepcopy來做備份,這樣記憶體會指向不同的地方
+import copy
+b_df = copy.deepcopy(b)
+b.append(5)
+print(b)
+print(b_df)
+#發現b和b_df印出來的不一樣了,達到了深複製的備份功能
 
